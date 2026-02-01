@@ -78,7 +78,14 @@ export default function Home() {
           { name: "Cancelled", value: 50 },
           { name: "Pending", value: 25 },
         ]} />
-        <ProductCategory/>
+        
+        <ProductCategory data={[
+          { name: "Electronics", value: 300 },
+          { name: "Clothing", value: 200 },
+          { name: "Books", value: 100 },
+          { name: "Home & Kitchen", value: 50 },
+          { name: "Beauty & Personal Care", value: 25 },
+        ]} />
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-7">

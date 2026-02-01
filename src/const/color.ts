@@ -6,4 +6,5 @@ export const color = {
     cancelled: "#ef4444",  // Red 500
     pending: "#f97316",  // Orange 500
     default: "#94a3b8",  // Slate 400
+    productCategory: "#60a5fa", // Blue 400
 }

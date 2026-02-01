@@ -11,7 +11,7 @@ import {
   ChartLegendContent
 } from "@/components/ui/chart"
 import { MoreHorizontal } from "lucide-react"
-import { chartConfig } from "@/const/chartConfig"
+import { orderChartConfig } from "@/const/chartConfig"
 
 interface OrderStatusProps {
   data: { name: string; value: number }[];
@@ -24,8 +24,8 @@ export function OrderStatus({ data }: OrderStatusProps) {
 
   const chartData = React.useMemo(() => {
     return data.map(item => {
-        const key = item.name as keyof typeof chartConfig;
-        const configItem = chartConfig[key];
+        const key = item.name as keyof typeof orderChartConfig;
+        const configItem = orderChartConfig[key];
         const color = configItem && 'color' in configItem ? configItem.color : "#94a3b8"; 
         
         return {
@@ -43,7 +43,7 @@ export function OrderStatus({ data }: OrderStatusProps) {
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer
-          config={chartConfig}
+          config={orderChartConfig}
           className="mx-auto aspect-square max-h-[300px]"
         >
           <PieChart>

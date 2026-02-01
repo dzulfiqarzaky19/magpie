@@ -1,7 +1,7 @@
 import { ChartConfig } from "@/components/ui/chart";
 import { color } from "./color";
 
-export const chartConfig = {
+export const orderChartConfig = {
     value: {
         label: "Orders",
         color: color.default,
@@ -25,5 +25,12 @@ export const chartConfig = {
     Pending: {
         label: "Pending",
         color: color.pending,
+    },
+} satisfies ChartConfig
+
+export const productChartConfig = {
+    value: {
+        label: "Products",
+        color: color.productCategory,
     },
 } satisfies ChartConfig
