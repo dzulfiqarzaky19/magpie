@@ -13,11 +13,12 @@
 // 1 Custom "Insight" Chart
 
 import { Insights } from "@/components/dashboard/Insights";
-import { Metrics } from "@/components/dashboard/Metrics";
+import { Metric } from "@/components/dashboard/Metric";
 import { OrderStatus } from "@/components/dashboard/OrderStatus";
 import { ProductCategory } from "@/components/dashboard/ProductCategory";
 import { RecentOrders } from "@/components/dashboard/RecentOrders";
 import { TopProducts } from "@/components/dashboard/TopProducts";
+import { DollarSign, ShoppingCart, Star } from "lucide-react";
 
 export default function Home() {
   return (
@@ -43,10 +44,34 @@ export default function Home() {
       </div>
       
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        <Metrics />
-        <Metrics />
-        <Metrics />
-        <Metrics />
+        <Metric 
+          title="Total Revenue"
+          value="$12,345.67"
+          icon={DollarSign}
+          trend={{ value: 12, isPositive: true }}
+          color="blue"
+        />
+        <Metric 
+          title="Total Orders"
+          value="1,234"
+          icon={ShoppingCart}
+          trend={{ value: 12, isPositive: true }}
+          color="purple"
+        />
+        <Metric 
+          title="Average Order Value"
+          value="$123.45"
+          icon={DollarSign}
+          trend={{ value: 12, isPositive: true }}
+          color="orange"
+        />
+        <Metric 
+          title="Average Product Rating"
+          value="4.5"
+          icon={Star}
+          trend={{ value: 12, isPositive: true }}
+          color="emerald"
+        />
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-7">
