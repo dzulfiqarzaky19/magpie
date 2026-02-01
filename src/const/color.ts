@@ -7,4 +7,5 @@ export const color = {
     pending: "#f97316",  // Orange 500
     default: "#94a3b8",  // Slate 400
     productCategory: "#60a5fa", // Blue 400
+    insights: "#8b5cf6", // Indigo 500
 }

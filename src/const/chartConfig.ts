@@ -34,3 +34,11 @@ export const productChartConfig = {
         color: color.productCategory,
     },
 } satisfies ChartConfig
+
+
+export const insightsChartConfig = {
+    value: {
+        label: "Revenue",
+        color: color.insights,
+    },
+} satisfies ChartConfig

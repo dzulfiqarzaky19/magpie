@@ -1,10 +1,5 @@
 
-// 2 Data Tables
-
-// Top Products (5 highest priced items)
-// 1 Custom "Insight" Chart
-
-import { Insights } from "@/components/dashboard/Insights";
+import { Insights } from "@/components/dashboard/Insights/Insights";
 import { Metric } from "@/components/dashboard/Metric";
 import { OrderStatus } from "@/components/dashboard/OrderStatus";
 import { ProductCategory } from "@/components/dashboard/ProductCategory";
@@ -85,7 +80,176 @@ export default function Home() {
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-7">
-        <Insights />
+        <Insights 
+          daily={[{
+            name: "January 1st",
+            value: 100,
+            date: "2023-01-01",
+          }, {
+            name: "January 2nd",
+            value: 200,
+            date: "2023-01-02",
+          }, {
+            name: "January 3rd",
+            value: 300,
+            date: "2023-01-03",
+          }, {
+            name: "January 18th",
+            value: 1800,
+            date: "2023-01-18",
+          }, {
+            name: "January 19th",
+            value: 1900,
+            date: "2023-01-19",
+          }, {
+            name: "January 20th",
+            value: 2000,
+            date: "2023-01-20",
+          }, {
+            name: "January 21st",
+            value: 2100,
+            date: "2023-01-21",
+          }, {
+            name: "January 22nd",
+            value: 2200,
+            date: "2023-01-22",
+          }, {
+            name: "January 23rd",
+            value: 2300,
+            date: "2023-01-23",
+          }, {
+            name: "January 29th",
+            value: 2900,
+            date: "2023-01-29",
+          }, {
+            name: "January 30th",
+            value: 3000,
+            date: "2023-01-30",
+          }, {
+            name: "January 31st",
+            value: 3100,
+            date: "2023-01-31",
+          }]}
+          monthly={[{
+            name: "January",
+            value: 100,
+          }, {
+            name: "February",
+            value: 200,
+          }, {
+            name: "March",
+            value: 300,
+          }, {
+            name: "April",
+            value: 400,
+          }, {
+            name: "May",
+            value: 500,
+          }, {
+            name: "June",
+            value: 600,
+          }, {
+            name: "July",
+            value: 700,
+          }, {
+            name: "August",
+            value: 800,
+          }, {
+            name: "September",
+            value: 900,
+          }, {
+            name: "October",
+            value: 1000,
+          }, {
+            name: "November",
+            value: 1100,
+          }, {
+            name: "December",
+            value: 1200,
+          }]}
+          yearly={[{
+            name: "2022",
+            value: 100,
+          }, {
+            name: "2023",
+            value: 200,
+          }, {
+            name: "2024",
+            value: 300,
+          }, {
+            name: "2025",
+            value: 400,
+          }, {
+            name: "2026",
+            value: 500,
+          }, {
+            name: "2027",
+            value: 600,
+          }, {
+            name: "2028",
+            value: 700,
+          }, {
+            name: "2029",
+            value: 800,
+          }, {
+            name: "2030",
+            value: 900,
+          }, {
+            name: "2031",
+            value: 1000,
+          }, {
+            name: "2032",
+            value: 1100,
+          }, {
+            name: "2033",
+            value: 1200,
+          }]}
+          hourly={[{
+            name: "12am",
+            value: 100,
+            date: "2023-01-01",
+          }, {
+            name: "2pm",
+            value: 1500,
+            date: "2023-01-01",
+          }, {
+            name: "3pm",
+            value: 1600,
+            date: "2023-01-01",
+          }, {
+            name: "4pm",
+            value: 1700,
+            date: "2023-01-01",
+          }, {
+            name: "5pm",
+            value: 1800,
+            date: "2023-01-01",
+          }, {
+            name: "6pm",
+            value: 700,
+            date: "2023-01-01",
+          }, {
+            name: "7pm",
+            value: 2000,
+            date: "2023-01-01",
+          }, {
+            name: "8pm",
+            value: 2100,
+            date: "2023-01-01",
+          }, {
+            name: "9pm",
+            value: 1800,
+            date: "2023-01-01",
+          }, {
+            name: "10pm",
+            value: 2300,
+            date: "2023-01-01",
+          }, {
+            name: "11pm",
+            value: 2400,
+            date: "2023-01-01",
+          }]} 
+        />
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-7">

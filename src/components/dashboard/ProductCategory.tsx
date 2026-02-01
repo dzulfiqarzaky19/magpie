@@ -15,8 +15,7 @@ interface ProductCategoryProps {
 }
 
 
-export function ProductCategory({ data }: ProductCategoryProps) {
-  return (
+export const ProductCategory = ({ data }: ProductCategoryProps) => (
     <Card className="col-span-full lg:col-span-4 shadow-sm border-border/50">
       <CardHeader className="flex flex-row items-center justify-between pb-8">
         <div className="space-y-1">
@@ -46,5 +45,4 @@ export function ProductCategory({ data }: ProductCategoryProps) {
         </ChartContainer>
       </CardContent>
     </Card>
-  );
-}
+)

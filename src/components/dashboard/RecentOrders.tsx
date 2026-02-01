@@ -22,8 +22,7 @@ interface RecentOrdersProps {
   }[];
 }
 
-export function RecentOrders({ orders }: RecentOrdersProps) {
-  return (
+export const RecentOrders = ({ orders }: RecentOrdersProps) => (
     <Card className="col-span-full lg:col-span-4">
       <CardHeader>
         <CardTitle>Recent Orders</CardTitle>
@@ -58,4 +57,3 @@ export function RecentOrders({ orders }: RecentOrdersProps) {
       </CardContent>
     </Card>
   );
-}

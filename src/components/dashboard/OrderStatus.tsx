@@ -17,7 +17,7 @@ interface OrderStatusProps {
   data: { name: string; value: number }[];
 }
 
-export function OrderStatus({ data }: OrderStatusProps) {
+export const OrderStatus = ({ data }: OrderStatusProps) => {
   const total = React.useMemo(() => {
     return data.reduce((acc, curr) => acc + curr.value, 0)
   }, [data])

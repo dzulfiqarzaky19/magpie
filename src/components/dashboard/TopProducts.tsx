@@ -27,9 +27,7 @@ interface TopProductsProps {
   }
 
 
-export function TopProducts({ products }: TopProductsProps) {
- 
-  return (
+export const TopProducts = ({ products }: TopProductsProps) => (
     <Card className="col-span-full lg:col-span-3 shadow-sm border-border/50">
       <CardHeader>
         <CardTitle>Top Performing Products</CardTitle>
@@ -63,4 +61,3 @@ export function TopProducts({ products }: TopProductsProps) {
       </CardContent>
     </Card>
   );
-}

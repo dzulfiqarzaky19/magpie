@@ -13,15 +13,14 @@ interface MetricProps {
   color?: "blue" | "purple" | "orange" | "emerald";
 }
 
-export function Metric({ title, value, icon: Icon, trend, color = "blue" }: MetricProps) {
-  const colorMap = {
-    blue: "bg-blue-50 text-blue-600",
-    purple: "bg-purple-50 text-purple-600",
-    orange: "bg-orange-50 text-orange-600",
-    emerald: "bg-emerald-50 text-emerald-600",
-  };
+const colorMap = {
+  blue: "bg-blue-50 text-blue-600",
+  purple: "bg-purple-50 text-purple-600",
+  orange: "bg-orange-50 text-orange-600",
+  emerald: "bg-emerald-50 text-emerald-600",
+};
 
-  return (
+export const Metric = ({ title, value, icon: Icon, trend, color = "blue" }: MetricProps) => (
     <Card className="overflow-hidden border-border/50 shadow-sm hover:shadow-md transition-shadow duration-200">
       <CardContent className="p-6">
         <div className="flex justify-between items-start mb-4">
@@ -45,4 +44,3 @@ export function Metric({ title, value, icon: Icon, trend, color = "blue" }: Metr
       </CardContent>
     </Card>
   );
-}
