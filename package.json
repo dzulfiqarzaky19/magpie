@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "trigger": "NODE_OPTIONS='--require ./scripts/force-ipv4.js' npx trigger.dev@latest dev"
   },
   "dependencies": {
     "@prisma/client": "^6.19.2",
