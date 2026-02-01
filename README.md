@@ -2,7 +2,7 @@
 
 A fullstack e-commerce dashboard test project.
 
-## 💡 Assignment Highlights
+## Assignment Highlights
 
 ### The "Custom Insight"
 Per the requirement to "find a business insight," I chose **Revenue Trends & Order Volume**.
@@ -14,7 +14,7 @@ The prompt noted that the mock API returns **static data** without timestamps.
 -   **Challenge**: A static dashboard is boring and doesn't demonstrate "real-time" capabilities.
 -   **Solution**: I implemented a pragmatic utility (`dummyGenerator`) in the trigger job. It adds a "small random variation" (as suggested) to generate synthetic orders and reviews on every sync. This ensures the **Revenue Trends** chart actually shows movement over time.
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Strict Stack
 - **Frontend/Backend**: Next.js (App Router)
@@ -35,7 +35,7 @@ The prompt noted that the mock API returns **static data** without timestamps.
 
 ---
 
-## 🏗 Technical Decisions & Architecture
+## Technical Decisions & Architecture
 
 We adopted a **Service-Repository Pattern** adapted for Next.js to ensure long-term maintainability.
 
@@ -114,7 +114,7 @@ src/
 
 ---
 
-## 🔄 Job Orchestration Integration
+## Job Orchestration Integration
 
 The background integration is handled in `src/trigger/ecommerceSync.ts`.
 
@@ -126,7 +126,7 @@ The background integration is handled in `src/trigger/ecommerceSync.ts`.
 
 ---
 
-## 📸 Demo Walkthrough
+## Demo Walkthrough
 
 Experience the full application lifecycle:
 
@@ -141,7 +141,7 @@ Experience the full application lifecycle:
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) (v18+)
@@ -176,7 +176,7 @@ Experience the full application lifecycle:
 
 ---
 
-## 🤖 AI Disclosure
+## AI Disclosure
 
 This project was built with the assistance of **Google's Gemini 3.0 Flash** model.
 
