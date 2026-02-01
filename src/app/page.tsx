@@ -5,8 +5,9 @@ import { OrderStatus } from "@/components/dashboard/OrderStatus";
 import { ProductCategory } from "@/components/dashboard/ProductCategory";
 import { RecentOrders } from "@/components/dashboard/RecentOrders";
 import { TopProducts } from "@/components/dashboard/TopProducts";
-import { getOrdersByStatus, getProductsByCategory, getRecentOrders, getTopProducts } from "@/services/server";
 import { getDashboardMetrics } from "@/services/metrics";
+import { getProductsByCategory, getTopProducts } from "@/services/product";
+import { getOrdersByStatus, getRecentOrders } from "@/services/order";
 import { DollarSign, ShoppingCart, Star } from "lucide-react";
 
 export default async function Home() {
