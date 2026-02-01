@@ -1,9 +1,5 @@
 
-// 4 Metric Cards
-// Total Revenue
-// Total Order Count
-// Average Order Value
-// Average Product Rating
+
 // 2 Standard Charts
 // Orders grouped by Status (Pie/Donut)
 // Product count grouped by Category (Bar/Column)
@@ -75,7 +71,13 @@ export default function Home() {
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-7">
-        <OrderStatus/>
+        <OrderStatus data={[
+          { name: "Delivered", value: 300 },
+          { name: "Shipped", value: 200 },
+          { name: "Processing", value: 100 },
+          { name: "Cancelled", value: 50 },
+          { name: "Pending", value: 25 },
+        ]} />
         <ProductCategory/>
       </div>
 

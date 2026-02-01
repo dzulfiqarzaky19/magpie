@@ -1,0 +1,29 @@
+import { ChartConfig } from "@/components/ui/chart";
+import { color } from "./color";
+
+export const chartConfig = {
+    value: {
+        label: "Orders",
+        color: color.default,
+    },
+    Delivered: {
+        label: "Delivered",
+        color: color.delivered,
+    },
+    Shipped: {
+        label: "Shipped",
+        color: color.shipped,
+    },
+    Processing: {
+        label: "Processing",
+        color: color.processing,
+    },
+    Cancelled: {
+        label: "Cancelled",
+        color: color.cancelled,
+    },
+    Pending: {
+        label: "Pending",
+        color: color.pending,
+    },
+} satisfies ChartConfig
