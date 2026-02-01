@@ -13,4 +13,8 @@ export default defineConfig({
   datasource: {
     url: env("DATABASE_URL"),
   },
+  // @ts-expect-error - seed is not yet typed in definingConfig but valid in runtime
+  seed: {
+    command: "tsx src/lib/prisma/seed.ts",
+  },
 });

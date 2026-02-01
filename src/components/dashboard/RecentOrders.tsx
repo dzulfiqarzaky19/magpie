@@ -9,17 +9,10 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
+import { Order } from "@prisma/client";
 
 interface RecentOrdersProps {
-  orders: {
-    totalPrice: number;
-    createdAt: Date;
-    id: number;
-    externalId: number | null;
-    userId: number;
-    status: string;
-    syncedAt: Date;
-  }[];
+  orders: Order[];
 }
 
 export const RecentOrders = ({ orders }: RecentOrdersProps) => (

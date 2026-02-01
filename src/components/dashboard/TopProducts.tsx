@@ -8,15 +8,10 @@ import {
 } from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Laptop, Shirt, Watch, Zap } from "lucide-react";
+import { Product } from "@prisma/client";
 
 interface TopProductsProps {
-  products: {
-    id: number;
-    name: string;
-    category: string;
-    price: number;
-    image: string | null;
-  }[];
+  products: Product[];
 }
 
  const getIcon = (category: string) => {

@@ -1,4 +1,4 @@
-const orders = [
+export const orders = [
     { "order_id": 1, "user_id": 1, "items": [{ "product_id": 1, "quantity": 2 }, { "product_id": 3, "quantity": 1 }], "total_price": 849.97, "status": "Shipped" },
     { "order_id": 2, "user_id": 2, "items": [{ "product_id": 2, "quantity": 1 }, { "product_id": 7, "quantity": 1 }], "total_price": 1149.98, "status": "Delivered" },
     { "order_id": 3, "user_id": 3, "items": [{ "product_id": 4, "quantity": 1 }, { "product_id": 8, "quantity": 1 }], "total_price": 599.98, "status": "Processing" },

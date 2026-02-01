@@ -5,9 +5,19 @@ import { OrderStatus } from "@/components/dashboard/OrderStatus";
 import { ProductCategory } from "@/components/dashboard/ProductCategory";
 import { RecentOrders } from "@/components/dashboard/RecentOrders";
 import { TopProducts } from "@/components/dashboard/TopProducts";
+import { getOrdersByStatus, getProductsByCategory, getRecentOrders, getTopProducts } from "@/services/server";
 import { DollarSign, ShoppingCart, Star } from "lucide-react";
 
-export default function Home() {
+export default async function Home() {
+
+  const [productsCategory, topProducts, ordersByStatus, recentOrders] = await Promise.all([
+    getProductsByCategory(),
+    getTopProducts(),
+    getOrdersByStatus(),
+    getRecentOrders(),
+  ])
+
+  console.log(productsCategory, topProducts, ordersByStatus, recentOrders)
   return (
     <div className="flex-1 space-y-8 p-8 pt-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between space-y-2 md:space-y-0 pb-6">
@@ -62,21 +72,9 @@ export default function Home() {
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-7">
-        <OrderStatus data={[
-          { name: "Delivered", value: 300 },
-          { name: "Shipped", value: 200 },
-          { name: "Processing", value: 100 },
-          { name: "Cancelled", value: 50 },
-          { name: "Pending", value: 25 },
-        ]} />
+        <OrderStatus data={ordersByStatus} />
 
-        <ProductCategory data={[
-          { name: "Electronics", value: 300 },
-          { name: "Clothing", value: 200 },
-          { name: "Books", value: 100 },
-          { name: "Home & Kitchen", value: 50 },
-          { name: "Beauty & Personal Care", value: 25 },
-        ]} />
+        <ProductCategory data={productsCategory} />
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-7">
@@ -253,86 +251,11 @@ export default function Home() {
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-7">
-        <RecentOrders orders={[{
-          id: 1,
-          externalId: 1,
-          userId: 1,
-          status: "Delivered",
-          totalPrice: 100,
-          createdAt: new Date(),
-          syncedAt: new Date(),
-        }, {
-          id: 2,
-          externalId: 2,
-          userId: 2,
-          status: "Shipped",
-          totalPrice: 200,
-          createdAt: new Date(),
-          syncedAt: new Date(),
-        }, {
-          id: 3,
-          externalId: 3,
-          userId: 3,
-          status: "Processing",
-          totalPrice: 300,
-          createdAt: new Date(),
-          syncedAt: new Date(),
-        }, {
-          id: 4,
-          externalId: 4,
-          userId: 4,
-          status: "Cancelled",
-          totalPrice: 400,
-          createdAt: new Date(),
-          syncedAt: new Date(),
-        }, {
-          id: 5,
-          externalId: 5,
-          userId: 5,
-          status: "Pending",
-          totalPrice: 500,
-          createdAt: new Date(),
-          syncedAt: new Date(),
-        }]} />
+        <RecentOrders orders={recentOrders} />
 
-        <TopProducts products={[
-          {
-            id: 1,
-            name: "Product 1",
-            category: "electron",
-            price: 100,
-            image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-          },
-          {
-            id: 2,
-            name: "Product 2",
-            category: "electron",
-            price: 200,
-            image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-          },
-          {
-            id: 3,
-            name: "Product 3",
-            category: "cloth",
-            price: 300,
-            image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-          },
-          {
-            id: 4,
-            name: "Product 4",
-            category: "cloth",
-            price: 400,
-            image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-          },
-          {
-            id: 5,
-            name: "Product 5",
-            category: "jewelry",
-            price: 500,
-            image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
-          },
-        ]} />
+        <TopProducts products={topProducts} />
       </div>
     </div>
-  );
+  )
 }
+         
