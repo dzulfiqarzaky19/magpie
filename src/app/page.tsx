@@ -11,6 +11,7 @@ import { getOrdersByStatus, getRecentOrders } from "@/services/order";
 import { DollarSign, ShoppingCart, Star } from "lucide-react";
 import { getLastSyncedTime, getSalesHistory } from "@/services/insights";
 import { formatDistanceToNow } from "date-fns";
+import { AutoRefresh } from "@/components/utils/AutoRefresh";
 
 export default async function Home() {
 
@@ -34,6 +35,8 @@ export default async function Home() {
 
   return (
     <div className="flex-1 space-y-8 p-8 pt-6">
+      <AutoRefresh />
+      
       <div className="flex flex-col md:flex-row md:items-center justify-between space-y-2 md:space-y-0 pb-6">
         <div>
             <h2 className="text-3xl font-bold tracking-tight text-foreground">Analytics Dashboard</h2>
