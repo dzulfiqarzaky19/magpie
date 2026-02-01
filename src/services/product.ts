@@ -2,7 +2,7 @@ import prisma from '@/lib/prisma';
 import { Product, Review } from '@/lib/types';
 import { randomDate } from '@/lib/utils/dummyGenerator';
 
-export async function productUpsert(product: Product) {
+const productUpsert = async (product: Product) => {
     const { product_id, name, description, price, rating, image, category, unit, discount, availability, brand, reviews } = product;
 
     return await prisma.product.upsert({
@@ -71,7 +71,7 @@ export const syncProduct = async (products: Product[]) => {
     await Promise.all(allReviews.map((review) => reviewUpsert(review, review.productId)));
 }
 
-export async function getProductsByCategory() {
+export const getProductsByCategory = async () => {
     const categoryCounts = await prisma.product.groupBy({
         by: ['category'],
         _count: { category: true },
@@ -82,7 +82,7 @@ export async function getProductsByCategory() {
     }));
 }
 
-export async function getTopProducts() {
+export const getTopProducts = async () => {
     return await prisma.product.findMany({
         take: 5,
         orderBy: { price: 'desc' },

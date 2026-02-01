@@ -76,7 +76,7 @@ export const syncOrders = async (orders: Order[]) => {
 
 };
 
-export async function getOrdersByStatus() {
+export const getOrdersByStatus = async () => {
     const statusCounts = await prisma.order.groupBy({
         by: ['status'],
         _count: { status: true },
@@ -87,7 +87,7 @@ export async function getOrdersByStatus() {
     }));
 }
 
-export async function getRecentOrders() {
+export const getRecentOrders = async () => {
     return await prisma.order.findMany({
         take: 5,
         orderBy: { createdAt: 'desc' },

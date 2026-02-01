@@ -8,7 +8,7 @@ interface DateRangeProps {
     previous: Prisma.DateTimeFilter;
 }
 
-async function getRevenue({ current, previous }: DateRangeProps) {
+const getRevenue = async ({ current, previous }: DateRangeProps) => {
     const [curr, prev] = await Promise.all([
         prisma.order.aggregate({ _sum: { totalPrice: true }, where: { createdAt: current } }),
         prisma.order.aggregate({ _sum: { totalPrice: true }, where: { createdAt: previous } })
@@ -20,7 +20,7 @@ async function getRevenue({ current, previous }: DateRangeProps) {
     return { value: currentRevenue, trend: calculateTrend(currentRevenue, previousRevenue) };
 }
 
-async function getOrderCount({ current, previous }: DateRangeProps) {
+const getOrderCount = async ({ current, previous }: DateRangeProps) => {
     const [curr, prev] = await Promise.all([
         prisma.order.count({ where: { createdAt: current } }),
         prisma.order.count({ where: { createdAt: previous } })
@@ -29,7 +29,7 @@ async function getOrderCount({ current, previous }: DateRangeProps) {
     return { value: curr, trend: calculateTrend(curr, prev) };
 }
 
-async function getAverageOrder({ current, previous }: DateRangeProps) {
+const getAverageOrder = async ({ current, previous }: DateRangeProps) => {
     const [curr, prev] = await Promise.all([
         prisma.order.aggregate({ _avg: { totalPrice: true }, where: { createdAt: current } }),
         prisma.order.aggregate({ _avg: { totalPrice: true }, where: { createdAt: previous } })
@@ -41,7 +41,7 @@ async function getAverageOrder({ current, previous }: DateRangeProps) {
     return { value: currentAverage, trend: calculateTrend(currentAverage, previousAverage) };
 }
 
-async function getRating({ current, previous }: DateRangeProps) {
+const getRating = async ({ current, previous }: DateRangeProps) => {
     const [curr, prev] = await Promise.all([
         prisma.review.aggregate({ _avg: { rating: true }, where: { createdAt: current } }),
         prisma.review.aggregate({ _avg: { rating: true }, where: { createdAt: previous } })
@@ -53,7 +53,7 @@ async function getRating({ current, previous }: DateRangeProps) {
     return { value: currentRating, trend: calculateTrend(currentRating, previousRating) };
 }
 
-export async function getDashboardMetrics() {
+export const getDashboardMetrics = async () => {
     const now = new Date();
     const thirtyDaysAgo = subDays(now, 30);
     const sixtyDaysAgo = subDays(now, 60);
