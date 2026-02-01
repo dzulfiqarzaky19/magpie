@@ -1,10 +1,6 @@
 
-
-// 2 Standard Charts
-// Orders grouped by Status (Pie/Donut)
-// Product count grouped by Category (Bar/Column)
 // 2 Data Tables
-// Recent Orders (Latest 5 by order_id)
+
 // Top Products (5 highest priced items)
 // 1 Custom "Insight" Chart
 
@@ -78,7 +74,7 @@ export default function Home() {
           { name: "Cancelled", value: 50 },
           { name: "Pending", value: 25 },
         ]} />
-        
+
         <ProductCategory data={[
           { name: "Electronics", value: 300 },
           { name: "Clothing", value: 200 },
@@ -93,7 +89,47 @@ export default function Home() {
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-7">
-        <RecentOrders />
+        <RecentOrders orders={[{
+          id: 1,
+          externalId: 1,
+          userId: 1,
+          status: "Delivered",
+          totalPrice: 100,
+          createdAt: new Date(),
+          syncedAt: new Date(),
+        }, {
+          id: 2,
+          externalId: 2,
+          userId: 2,
+          status: "Shipped",
+          totalPrice: 200,
+          createdAt: new Date(),
+          syncedAt: new Date(),
+        }, {
+          id: 3,
+          externalId: 3,
+          userId: 3,
+          status: "Processing",
+          totalPrice: 300,
+          createdAt: new Date(),
+          syncedAt: new Date(),
+        }, {
+          id: 4,
+          externalId: 4,
+          userId: 4,
+          status: "Cancelled",
+          totalPrice: 400,
+          createdAt: new Date(),
+          syncedAt: new Date(),
+        }, {
+          id: 5,
+          externalId: 5,
+          userId: 5,
+          status: "Pending",
+          totalPrice: 500,
+          createdAt: new Date(),
+          syncedAt: new Date(),
+        }]} />
         <TopProducts />
       </div>
     </div>
