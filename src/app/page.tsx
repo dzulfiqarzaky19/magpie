@@ -130,7 +130,44 @@ export default function Home() {
           createdAt: new Date(),
           syncedAt: new Date(),
         }]} />
-        <TopProducts />
+
+        <TopProducts products={[
+          {
+            id: 1,
+            name: "Product 1",
+            category: "electron",
+            price: 100,
+            image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+          },
+          {
+            id: 2,
+            name: "Product 2",
+            category: "electron",
+            price: 200,
+            image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+          },
+          {
+            id: 3,
+            name: "Product 3",
+            category: "cloth",
+            price: 300,
+            image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+          },
+          {
+            id: 4,
+            name: "Product 4",
+            category: "cloth",
+            price: 400,
+            image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+          },
+          {
+            id: 5,
+            name: "Product 5",
+            category: "jewelry",
+            price: 500,
+            image: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+          },
+        ]} />
       </div>
     </div>
   );
