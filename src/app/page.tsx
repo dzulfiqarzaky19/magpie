@@ -6,18 +6,19 @@ import { ProductCategory } from "@/components/dashboard/ProductCategory";
 import { RecentOrders } from "@/components/dashboard/RecentOrders";
 import { TopProducts } from "@/components/dashboard/TopProducts";
 import { getOrdersByStatus, getProductsByCategory, getRecentOrders, getTopProducts } from "@/services/server";
+import { getDashboardMetrics } from "@/services/metrics";
 import { DollarSign, ShoppingCart, Star } from "lucide-react";
 
 export default async function Home() {
 
-  const [productsCategory, topProducts, ordersByStatus, recentOrders] = await Promise.all([
+  const [productsCategory, topProducts, ordersByStatus, recentOrders, metrics] = await Promise.all([
     getProductsByCategory(),
     getTopProducts(),
     getOrdersByStatus(),
     getRecentOrders(),
+    getDashboardMetrics()
   ])
 
-  console.log(productsCategory, topProducts, ordersByStatus, recentOrders)
   return (
     <div className="flex-1 space-y-8 p-8 pt-6">
       <div className="flex flex-col md:flex-row md:items-center justify-between space-y-2 md:space-y-0 pb-6">
@@ -43,30 +44,30 @@ export default async function Home() {
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
         <Metric 
           title="Total Revenue"
-          value="$12,345.67"
+          value={`$${metrics.revenue.value.toLocaleString()}`}
           icon={DollarSign}
-          trend={{ value: 12, isPositive: true }}
+          trend={{ value: metrics.revenue.trend, isPositive: metrics.revenue.trend >= 0 }}
           color="blue"
         />
         <Metric 
           title="Total Orders"
-          value="1,234"
+          value={metrics.orders.value.toLocaleString()}
           icon={ShoppingCart}
-          trend={{ value: 12, isPositive: true }}
+          trend={{ value: metrics.orders.trend, isPositive: metrics.orders.trend >= 0 }}
           color="purple"
         />
         <Metric 
           title="Average Order Value"
-          value="$123.45"
+          value={`$${metrics.averageOrder.value.toFixed(2)}`}
           icon={DollarSign}
-          trend={{ value: 12, isPositive: true }}
+          trend={{ value: metrics.averageOrder.trend, isPositive: metrics.averageOrder.trend >= 0 }}
           color="orange"
         />
         <Metric 
           title="Average Product Rating"
-          value="4.5"
+          value={metrics.rating.value.toFixed(1)}
           icon={Star}
-          trend={{ value: 12, isPositive: true }}
+          trend={{ value: metrics.rating.trend, isPositive: metrics.rating.trend >= 0 }}
           color="emerald"
         />
       </div>
