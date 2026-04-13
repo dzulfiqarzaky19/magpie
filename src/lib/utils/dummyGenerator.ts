@@ -15,14 +15,19 @@ export const randomDate = (daysAgo: number = 30) => {
 
 export const generateNewOrders = async (products: Product[]) => {
     const totalNewOrders = Math.floor(Math.random() * 3) + 1;
-    const orderItems = [];
+    const itemMap = new Map<number, { productId: number; quantity: number }>();
     let calculatedTotal = 0;
 
     for (let i = 0; i < totalNewOrders; i++) {
         const randomProduct = products[Math.floor(Math.random() * products.length)];
         const quantity = Math.floor(Math.random() * 3) + 1;
 
-        orderItems.push({ productId: randomProduct.product_id, quantity });
+        const existing = itemMap.get(randomProduct.product_id);
+        if (existing) {
+            existing.quantity += quantity;
+        } else {
+            itemMap.set(randomProduct.product_id, { productId: randomProduct.product_id, quantity });
+        }
         calculatedTotal += (Number(randomProduct.price) * quantity);
     }
 
@@ -35,6 +40,8 @@ export const generateNewOrders = async (products: Product[]) => {
             syncedAt: new Date(),
         }
     });
+
+    const orderItems = Array.from(itemMap.values());
 
     await Promise.all(orderItems.map(item => prisma.orderItem.create({
         data: {
