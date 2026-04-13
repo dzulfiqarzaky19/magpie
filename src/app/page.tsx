@@ -1,3 +1,4 @@
+export const revalidate = 60 * 60; // 1 hour
 
 import { Insights } from "@/components/dashboard/Insights/Insights";
 import { Metric } from "@/components/dashboard/Metric";
@@ -14,7 +15,6 @@ import { formatDistanceToNow } from "date-fns";
 import { AutoRefresh } from "@/components/utils/AutoRefresh";
 
 export default async function Home() {
-
   const [
     productsCategory,
     topProducts,
@@ -22,7 +22,7 @@ export default async function Home() {
     recentOrders,
     metrics,
     salesHistory,
-    lastSyncedTime
+    lastSyncedTime,
   ] = await Promise.all([
     getProductsByCategory(),
     getTopProducts(),
@@ -30,60 +30,80 @@ export default async function Home() {
     getRecentOrders(),
     getDashboardMetrics(),
     getSalesHistory(),
-    getLastSyncedTime()
-  ])
+    getLastSyncedTime(),
+  ]);
 
   return (
     <div className="flex-1 space-y-8 p-8 pt-6">
       <AutoRefresh />
-      
+
       <div className="flex flex-col md:flex-row md:items-center justify-between space-y-2 md:space-y-0 pb-6">
         <div>
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">Analytics Dashboard</h2>
-            <p className="text-muted-foreground">Real-time performance metrics and business insights.</p>
+          <h2 className="text-3xl font-bold tracking-tight text-foreground">
+            Analytics Dashboard
+          </h2>
+          <p className="text-muted-foreground">
+            Real-time performance metrics and business insights.
+          </p>
         </div>
         <div className="flex items-center gap-4">
-            <div className="text-right hidden md:block">
-                <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">System Status</p>
-                <div className="flex items-center gap-2">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                    </span>
-                    <p className="text-sm font-medium text-foreground">Last Synced: {formatDistanceToNow(lastSyncedTime, { addSuffix: true })}</p>
-                </div>
+          <div className="text-right hidden md:block">
+            <p className="text-[10px] uppercase font-bold text-muted-foreground tracking-wider">
+              System Status
+            </p>
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <p className="text-sm font-medium text-foreground">
+                Last Synced:{" "}
+                {formatDistanceToNow(lastSyncedTime, { addSuffix: true })}
+              </p>
             </div>
-     
+          </div>
         </div>
       </div>
-      
+
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-        <Metric 
+        <Metric
           title="Total Revenue"
           value={`$${metrics.revenue.value.toLocaleString()}`}
           icon={DollarSign}
-          trend={{ value: metrics.revenue.trend, isPositive: metrics.revenue.trend >= 0 }}
+          trend={{
+            value: metrics.revenue.trend,
+            isPositive: metrics.revenue.trend >= 0,
+          }}
           color="blue"
         />
-        <Metric 
+        <Metric
           title="Total Orders"
           value={metrics.orders.value.toLocaleString()}
           icon={ShoppingCart}
-          trend={{ value: metrics.orders.trend, isPositive: metrics.orders.trend >= 0 }}
+          trend={{
+            value: metrics.orders.trend,
+            isPositive: metrics.orders.trend >= 0,
+          }}
           color="purple"
         />
-        <Metric 
+        <Metric
           title="Average Order Value"
           value={`$${metrics.averageOrder.value.toFixed(2)}`}
           icon={DollarSign}
-          trend={{ value: metrics.averageOrder.trend, isPositive: metrics.averageOrder.trend >= 0 }}
+          trend={{
+            value: metrics.averageOrder.trend,
+            isPositive: metrics.averageOrder.trend >= 0,
+          }}
           color="orange"
         />
-        <Metric 
+        <Metric
           title="Average Product Rating"
           value={metrics.rating.value.toFixed(1)}
           icon={Star}
-          trend={{ value: metrics.rating.trend, isPositive: metrics.rating.trend >= 0 }}
+          trend={{
+            value: metrics.rating.trend,
+            isPositive: metrics.rating.trend >= 0,
+          }}
           color="emerald"
         />
       </div>
@@ -95,7 +115,7 @@ export default async function Home() {
       </div>
 
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-7">
-        <Insights 
+        <Insights
           daily={salesHistory.daily}
           monthly={salesHistory.monthly}
           yearly={salesHistory.yearly}
@@ -109,6 +129,5 @@ export default async function Home() {
         <TopProducts products={topProducts} />
       </div>
     </div>
-  )
+  );
 }
-         
